@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Yodha Village — Images</title>
+    <link rel="stylesheet" href="../CSS/home.css" />
+    <style>
+        /* page-specific styles (keeps layout consistent even if home.css is minimal) */
+        .page-container { max-width: 1100px; margin: 32px auto; padding: 0 16px; }
+        header.navbar { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+        .back-link { margin: 8px 0; display:inline-block; color:#1266f1; text-decoration:none; }
+        .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-top:16px; }
+        .gallery-item { position:relative; overflow:hidden; border-radius:8px; background:#f5f5f5; }
+        .gallery-item img { width:100%; height:160px; object-fit:cover; display:block; transition:transform .25s ease; }
+        .gallery-item:hover img { transform:scale(1.05); }
+        .caption { padding:8px 10px; font-size:14px; background:#fff; }
+        .view-btn { display:inline-block; margin-top:6px; padding:6px 10px; background:#ff7a59; color:#fff; border-radius:4px; text-decoration:none; font-size:13px; }
+        /* lightbox */
+        .lightbox { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.75); z-index:1000; }
+        .lightbox.open { display:flex; }
+        .lightbox-content { max-width:90%; max-height:90%; background:#fff; padding:12px; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.5); }
+        .lightbox-content img { max-width:100%; max-height:70vh; display:block; margin:0 auto; }
+        .lightbox-caption { margin-top:8px; color:#333; font-size:14px; }
+        .lightbox-close { position:absolute; top:18px; right:20px; background:#fff; border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-weight:700; }
+        @media (max-width:480px){ .gallery-item img{ height:120px } }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <header class="navbar">
+            <div class="logo">Yodha Village</div>
+            <nav>
+                <a class="back-link" href="home.html">← Back to Home</a>
+            </nav>
+        </header>
+
+        <main>
+            <h1>Gallery — Yodha Village</h1>
+            <p>Explore photos of the village — fields, festivals, homes and community life. Click "View" to see details.</p>
+
+            <section class="gallery-grid" id="galleryGrid">
+                <figure class="gallery-item" data-src="../download (1).jpg" data-title="Village Panorama" data-desc="A wide view of the village fields at sunrise.">
+                    <img src="../download (1).jpg" alt="Village Panorama">
+                    <figcaption class="caption">
+                        Village Panorama
+                        <div><a class="view-btn" href="#" data-action="open">View</a></div>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item" data-src="../download.jpg" data-title="Temple & Courtyard" data-desc="Local temple where festivals and gatherings are held.">
+                    <img src="../download.jpg" alt="Temple">
+                    <figcaption class="caption">
+                        Temple & Courtyard
+                        <div><a class="view-btn" href="#" data-action="open">View</a></div>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item" data-src="../download (3).jpg" data-title="Harvest Season" data-desc="Farmers harvesting mustard and wheat during the season.">
+                    <img src="../download (3).jpg" alt="Harvest">
+                    <figcaption class="caption">
+                        Harvest Season
+                        <div><a class="view-btn" href="#" data-action="open">View</a></div>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item" data-src="../download (2).jpg" data-title="Local Crafts" data-desc="Handmade pottery and crafts made by village artisans.">
+                    <img src="../download (2).jpg" alt="Crafts">
+                    <figcaption class="caption">
+                        Local Crafts
+                        <div><a class="view-btn" href="#" data-action="open">View</a></div>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item" data-src="../download (1).jpg" data-title="Community Event" data-desc="Village fair and cultural performance during an annual festival.">
+                    <img src="../download (1).jpg" alt="Event">
+                    <figcaption class="caption">
+                        Community Event
+                        <div><a class="view-btn" href="#" data-action="open">View</a></div>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section style="margin-top:28px;">
+                <h2>Image Details & Licensing</h2>
+                <p>If you replace images in the project folder, keep filenames or update references above. Use only images you have rights to distribute.</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-hidden="true">
+        <div class="lightbox-close" id="lbClose">✕</div>
+        <div class="lightbox-content" id="lbContent">
+            <img id="lbImage" src="" alt="">
+            <div class="lightbox-caption">
+                <strong id="lbTitle"></strong>
+                <p id="lbDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // simple lightbox logic
+        (function(){
+            const grid = document.getElementById('galleryGrid');
+            const lb = document.getElementById('lightbox');
+            const lbImage = document.getElementById('lbImage');
+            const lbTitle = document.getElementById('lbTitle');
+            const lbDesc = document.getElementById('lbDesc');
+            const lbClose = document.getElementById('lbClose');
+
+            grid.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-action="open"]');
+                if (!btn) return;
+                e.preventDefault();
+                const item = btn.closest('.gallery-item');
+                openLightbox(item);
+            });
+
+            function openLightbox(item){
+                const src = item.getAttribute('data-src');
+                const title = item.getAttribute('data-title') || '';
+                const desc = item.getAttribute('data-desc') || '';
+                lbImage.src = src;
+                lbImage.alt = title;
+                lbTitle.textContent = title;
+                lbDesc.textContent = desc;
+                lb.classList.add('open');
+                lb.setAttribute('aria-hidden','false');
+            }
+
+            function closeLightbox(){
+                lb.classList.remove('open');
+                lb.setAttribute('aria-hidden','true');
+                lbImage.src = '';
+            }
+
+            lbClose.addEventListener('click', closeLightbox);
+            lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+        })();
+    </script>
+</body>
+</html>

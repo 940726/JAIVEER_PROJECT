@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Why Choose Yodha Village</title>
+    <link rel="stylesheet" href="../CSS/home.css" />
+    <style>
+        /* small page-specific styles */
+        .container { max-width:1100px; margin:28px auto; padding:0 16px; }
+        .hero { background: linear-gradient(135deg,#FFEFBA 0%,#FFFFFF 100%); padding:28px; border-radius:8px; }
+        .columns { display:grid; grid-template-columns: 1fr 340px; gap:20px; margin-top:20px; }
+        .card { background:#fff; padding:16px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+        ul.benefits { margin:12px 0 0 18px; }
+        .testimonials { margin-top:16px; display:flex; flex-direction:column; gap:10px; }
+        .testimonial { font-size:14px; color:#333; background:#f8fbff; padding:10px; border-left:4px solid #ff7a59; border-radius:6px; }
+        .cta { display:inline-block; margin-top:12px; background:#ff7a59; color:#fff; padding:10px 14px; border-radius:6px; text-decoration:none; }
+        .side-map iframe { width:100%; height:220px; border:0; border-radius:6px; }
+        @media (max-width:880px){ .columns{ grid-template-columns:1fr; } .side-map iframe{ height:200px }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="display:flex;justify-content:space-between;align-items:center;">
+            <h1 style="margin:0">Why Choose Yodha Village</h1>
+            <nav><a href="home.html" style="text-decoration:none;color:#1266f1">← Back to Home</a></nav>
+        </header>
+
+        <section class="hero card" aria-labelledby="why-heading">
+            <h2 id="why-heading">A genuine rural experience with community-first values</h2>
+            <p>Yodha Village, near Neem Ka Thana (Sikar, Rajasthan), offers visitors and partners a blend of culture, safety and sustainable opportunities — ideal for cultural visits, agro‑tourism, learning traditional crafts and responsible collaboration.</p>
+            <a class="cta" href="home.html#contact">Contact the Village Office</a>
+        </section>
+
+        <div class="columns" role="region" aria-label="Reasons and details">
+            <div>
+                <article class="card" aria-labelledby="reasons">
+                    <h3 id="reasons">Top reasons to choose Yodha Village</h3>
+                    <ul class="benefits">
+                        <li><strong>Authentic Culture:</strong> Participate in local festivals, food and folk music.</li>
+                        <li><strong>Community Hospitality:</strong> Family‑friendly stays and guided local experiences.</li>
+                        <li><strong>Agro & Craft Learning:</strong> Hands‑on farming, animal husbandry and artisan workshops.</li>
+                        <li><strong>Safe & Accessible:</strong> Close to Neem Ka Thana with road links to Sikar and Jaipur.</li>
+                        <li><strong>Support Local Economy:</strong> Your visit helps artisans and farmers directly.</li>
+                    </ul>
+                </article>
+
+                <article class="card" style="margin-top:16px" aria-labelledby="programs">
+                    <h3 id="programs">Programs & Opportunities</h3>
+                    <p>We support short cultural stays, school field trips, craft workshops, farm visits and small group tours. Custom programs can be arranged via the village panchayat.</p>
+                    <h4 style="margin-top:8px">Who should visit?</h4>
+                    <p>Students, cultural travelers, researchers, NGOs and small tour groups interested in sustainable rural development.</p>
+                </article>
+
+                <article class="card" style="margin-top:16px" aria-labelledby="testi-heading">
+                    <h3 id="testi-heading">Testimonials</h3>
+                    <div class="testimonials">
+                        <div class="testimonial"><strong>R. Sharma:</strong> "Beautiful hospitality and a memorable cultural experience. The craft workshop was excellent."</div>
+                        <div class="testimonial"><strong>M. Verma:</strong> "Great for students — they learned traditional farming practices and local history."</div>
+                    </div>
+                </article>
+            </div>
+
+            <aside class="card" aria-labelledby="info-aside">
+                <h3 id="info-aside">Quick Info & Location</h3>
+                <p><strong>Nearest town:</strong> Neem Ka Thana (road access)</p>
+                <p><strong>Nearest railway:</strong> Sikar Junction (~40–60 km)</p>
+                <p><strong>Nearest airport:</strong> Jaipur (~120 km)</p>
+
+                <div class="side-map" style="margin-top:12px">
+                    <iframe title="Neem Ka Thana map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.964964024052!2d75.7865400753706!3d27.73972717618751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c6e2e2e2e2e2f%3A0x2e2e2e2e2e2e2e2e!2sNeem%20Ka%20Thana%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1696060800000!5m2!1sen!2sin"
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div style="margin-top:12px">
+                    <a class="cta" href="home.html#contact">Request Visit / More Info</a>
+                </div>
+            </aside>
+        </div>
+
+        <footer style="margin-top:22px;text-align:center;color:#666;font-size:14px;">
+            <p>&copy; 2025 Yodha Village — <a href="home.html" style="color:#1266f1">Home</a> · <a href="image.html" style="color:#1266f1">Gallery</a> · <a href="home.html#contact" style="color:#1266f1">Contact</a></p>
+        </footer>
+    </div>
+</body>
+</html>

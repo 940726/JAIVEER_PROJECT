@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Location — Yodha Village</title>
+    <link rel="stylesheet" href="../CSS/home.css" />
+    <style>
+        .container { max-width:1100px; margin:28px auto; padding:0 16px; }
+        .hero { background:linear-gradient(180deg,#fff8f2,#fff); padding:20px;border-radius:8px; }
+        .columns { display:grid; grid-template-columns:1fr 360px; gap:18px; margin-top:18px; }
+        .card { background:#fff; padding:14px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+        .map iframe{ width:100%; height:320px; border:0; border-radius:8px; }
+        .list dt{ font-weight:700; margin-top:8px; }
+        .list dd{ margin:4px 0 10px 0; }
+        .small-note{ font-size:13px;color:#555;margin-top:10px; }
+        @media (max-width:880px){ .columns{ grid-template-columns:1fr } .map iframe{ height:220px } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="display:flex;justify-content:space-between;align-items:center;">
+            <h1 style="margin:0">Location — Yodha Village</h1>
+            <nav><a href="home.html" style="text-decoration:none;color:#1266f1">← Back to Home</a></nav>
+        </header>
+
+        <section class="hero card" aria-labelledby="loc-hero">
+            <h2 id="loc-hero">Find Yodha Village (near Neem Ka Thana, Sikar, Rajasthan)</h2>
+            <p>Yodha Village lies in the rural area surrounding Neem Ka Thana. Below are maps, directions and travel options to plan your visit.</p>
+        </section>
+
+        <div class="columns" role="region" aria-label="Map and travel details">
+            <main>
+                <article class="card map" aria-labelledby="map-heading">
+                    <h3 id="map-heading">Map — Neem Ka Thana area</h3>
+                    <iframe title="Neem Ka Thana map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.964964024052!2d75.7865400753706!3d27.73972717618751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c6e2e2e2e2e2f%3A0x2e2e2e2e2e2e2e2e!2sNeem%20Ka%20Thana%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1696060800000!5m2!1sen!2sin"
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    <p class="small-note">Open in Google Maps: <a href="https://www.google.com/maps/search/Neem+Ka+Thana+Rajasthan" target="_blank" rel="noopener">Neem Ka Thana, Rajasthan</a></p>
+                </article>
+
+                <article class="card" style="margin-top:14px" aria-labelledby="directions">
+                    <h3 id="directions">Directions & Distances</h3>
+                    <dl class="list">
+                        <dt>From Neem Ka Thana (nearest town)</dt>
+                        <dd>By road: ~10–30 km depending on exact village location (local roads). Travel time: 20–50 minutes.</dd>
+
+                        <dt>From Sikar (district centre)</dt>
+                        <dd>By road: ~40–60 km. Bus and private taxis available from Sikar.</dd>
+
+                        <dt>From Jaipur (nearest major city / airport)</dt>
+                        <dd>By road: ~110–140 km (2.5–3.5 hours). Jaipur International Airport is the closest major airport.</dd>
+
+                        <dt>From Delhi</dt>
+                        <dd>By road: ~250–300 km (5–6 hours depending on route). Train to Sikar + road transfer is an alternate option.</dd>
+                    </dl>
+
+                    <h4 style="margin-top:8px">GPS / Coordinates (approx.)</h4>
+                    <p>Latitude: 27.7397° N, Longitude: 75.7865° E — use these in your GPS for better accuracy.</p>
+                </article>
+
+                <article class="card" style="margin-top:14px" aria-labelledby="transport">
+                    <h3 id="transport">Transport Options</h3>
+                    <ul>
+                        <li><strong>By Car / Taxi:</strong> Best option for direct access to the village; local drivers know village routes.</li>
+                        <li><strong>By Bus:</strong> State and private buses run to Neem Ka Thana; take a local taxi or shared vehicle to the village.</li>
+                        <li><strong>By Train:</strong> Nearest major station: Sikar Junction — then road transfer.</li>
+                        <li><strong>By Air:</strong> Jaipur International Airport — then hire a taxi or take a bus toward Sikar / Neem Ka Thana.</li>
+                    </ul>
+
+                    <p class="small-note">Tip: Confirm local road status during monsoon season; some rural roads may be slower.</p>
+                </article>
+            </main>
+
+            <aside class="card" aria-labelledby="quick-info">
+                <h3 id="quick-info">Quick Info & Contacts</h3>
+                <p><strong>Nearest town:</strong> Neem Ka Thana</p>
+                <p><strong>District:</strong> Sikar, Rajasthan</p>
+                <p><strong>Nearest railway:</strong> Sikar Junction (~40–60 km)</p>
+                <p><strong>Nearest airport:</strong> Jaipur (~120 km)</p>
+
+                <div style="margin-top:12px">
+                    <a href="home.html#contact" style="text-decoration:none;color:#1266f1">Contact Village Office</a><br>
+                    <a href="image.html" style="text-decoration:none;color:#1266f1">View Gallery</a><br>
+                    <a href="wtcs.html" style="text-decoration:none;color:#1266f1">Why Choose Us</a>
+                </div>
+            </aside>
+        </div>
+
+        <footer style="margin-top:18px;text-align:center;color:#666;font-size:13px;">
+            <p>&copy; 2025 Yodha Village — <a href="home.html" style="color:#1266f1">Home</a> · <a href="image.html" style="color:#1266f1">Gallery</a> · <a href="wtcs.html" style="color:#1266f1">Why Choose Us</a></p>
+        </footer>
+    </div>
+</body>
+</html>

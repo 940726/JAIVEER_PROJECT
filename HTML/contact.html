@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact — Yodha Village</title>
+    <link rel="stylesheet" href="../CSS/home.css" />
+    <style>
+        .container { max-width:1000px; margin:28px auto; padding:0 16px; }
+        header { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+        .card { background:#fff; padding:18px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+        .contact-grid { display:grid; grid-template-columns:1fr 360px; gap:18px; margin-top:14px; }
+        .info p { margin:6px 0; }
+        form label { display:block; margin-top:10px; font-weight:600; }
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
+            width:100%; padding:10px; margin-top:6px; border:1px solid #ddd; border-radius:6px; box-sizing:border-box;
+        }
+        button.send { margin-top:12px; background:#ff7a59; color:#fff; border:0; padding:10px 14px; border-radius:6px; cursor:pointer; }
+        .msg { margin-top:12px; padding:10px; border-radius:6px; display:none; }
+        .msg.success { background:#e6ffef; color:#084f26; border:1px solid #b7f0c9; }
+        .map iframe { width:100%; height:220px; border:0; border-radius:6px; }
+        @media (max-width:860px){ .contact-grid { grid-template-columns:1fr; } .map iframe{ height:200px } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 style="margin:0">Contact Yodha Village</h1>
+            <nav><a href="home.html" style="text-decoration:none;color:#1266f1">← Back to Home</a></nav>
+        </header>
+
+        <div class="contact-grid">
+            <div class="card">
+                <h2>Get in touch</h2>
+                <p class="lead">Use the form below to send a message to the village office. For urgent matters call the phone number listed on the right.</p>
+
+                <form id="contactForm" class="contact-form" action="#" method="post" novalidate>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" placeholder="Your full name" required>
+
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+                    <label for="phone">Phone</label>
+                    <input id="phone" name="phone" type="tel" placeholder="+91-XXXXXXXXXX">
+
+                    <label for="subject">Subject</label>
+                    <input id="subject" name="subject" type="text" placeholder="Reason for contact (e.g., Visit request)">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+
+                    <button type="submit" class="send">Send Message</button>
+
+                    <div id="formMsg" class="msg success" role="status" aria-live="polite"></div>
+                </form>
+            </div>
+
+            <aside class="card info">
+                <h3>Village Office</h3>
+                <p><strong>Yodha Village Panchayat</strong></p>
+                <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
+                <p><strong>Email:</strong> info@yodhavillage.example</p>
+                <p><strong>Address:</strong> Yodha Village, Near Neem Ka Thana, Sikar District, Rajasthan, India</p>
+
+                <div style="margin-top:12px">
+                    <a href="home.html#why" style="text-decoration:none;color:#1266f1">Why choose us?</a> ·
+                    <a href="image.html" style="text-decoration:none;color:#1266f1">Gallery</a>
+                </div>
+
+                <div class="map" style="margin-top:12px">
+                    <iframe title="Neem Ka Thana map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.964964024052!2d75.7865400753706!3d27.73972717618751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c6e2e2e2e2e2f%3A0x2e2e2e2e2e2e2e2e!2sNeem%20Ka%20Thana%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1696060800000!5m2!1sen!2sin"
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </aside>
+        </div>
+
+        <footer style="margin-top:20px;text-align:center;color:#666;font-size:13px;">
+            <p>&copy; 2025 Yodha Village — <a href="home.html" style="color:#1266f1">Home</a> · <a href="image.html" style="color:#1266f1">Gallery</a> · <a href="wtcs.html" style="color:#1266f1">Why Choose Us</a></p>
+        </footer>
+    </div>
+
+    <script>
+        (function(){
+            const form = document.getElementById('contactForm');
+            const msg = document.getElementById('formMsg');
+
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                // simple client-side validation
+                const name = form.name.value.trim();
+                const email = form.email.value.trim();
+                const message = form.message.value.trim();
+
+                if (!name || !email || !message) {
+                    msg.classList.remove('success');
+                    msg.style.display = 'block';
+                    msg.textContent = 'Please fill name, email and message.';
+                    msg.style.background = '#ffecec';
+                    msg.style.color = '#7a1b1b';
+                    return;
+                }
+
+                // simulate send: store to localStorage (for demo) and show success
+                const submissions = JSON.parse(localStorage.getItem('yodha_submissions') || '[]');
+                submissions.push({
+                    name, email, phone: form.phone.value.trim(), subject: form.subject.value.trim(), message, time: new Date().toISOString()
+                });
+                localStorage.setItem('yodha_submissions', JSON.stringify(submissions));
+
+                msg.className = 'msg success';
+                msg.style.display = 'block';
+                msg.textContent = 'Thank you — your message has been received. We will contact you soon.';
+                form.reset();
+            });
+        })();
+    </script>
+</body>
+</html>
